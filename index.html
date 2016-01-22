@@ -115,7 +115,7 @@
 			document.addEventListener('touchmove', function () {
 
 				for (var i = 0; i < links.length; i++) {
-					links[i].style.left =  - sign * i * window.innerWidth + event.touches[0].pageX + 'px';
+					links[i].style.left = sign * i * window.innerWidth + event.touches[0].pageX + 'px';
 				}
 
 				touchFinish = event.touches[0].pageX;
