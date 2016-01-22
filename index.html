@@ -125,7 +125,12 @@
 			document.addEventListener('touchmove', function () {
 
 				for (var i = 0; i < links.length; i++) {
-					links[i].style.left = sign * (i + 1) * window.innerWidth + event.touches[0].pageX + 'px';
+
+					if(parseInt(document.body.style.background) > 0){
+						links[i].style.left = sign * i * window.innerWidth + event.touches[0].pageX + parseInt(document.body.style.background) + 'px';
+					}else{
+						links[i].style.left = sign * (i - 1) * window.innerWidth + event.touches[0].pageX + 'px';
+					}
 
 				}
 
@@ -136,7 +141,8 @@
 			});
 
 			document.addEventListener('touchend', function () {
-
+				var leftPos = getComputedStyle(links[0]);
+				document.body.style.background = leftPos.left;
 			});
 		}
 
