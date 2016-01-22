@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" content="width=device-width, initial-scale=1, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+	<meta type="viewport" >
+	<title>Document</title>
+</head>
+<body>
+	<style>
+		body{
+			margin: 0;
+		}
+		.contiainer{
+			position: relative;
+			overflow: hidden;
+			display: flex;
+			height: 100vh;
+			justify-content: center;
+			transition:left 4s ease-in .4s;
+		}
+		a{
+			position: absolute;
+			width: 100%;
+			height: 100vh;
+			text-decoration: none;
+			color: #fff;
+		}
+		a[data-index='1']{
+			left: 0;
+			background: green;
+		}
+		a[data-index='2']{
+			left: 200%;
+			background: tomato;
+		}
+		a[data-index='3']{
+			left: 300%;
+			background: brown;
+		}
+		a[data-index='4']{
+			left: 400%;
+			background: navy;
+		}
+		a[data-index='5']{
+			left: 500%;
+			background: yellowgreen;
+		}
+
+
+	</style>
+
+
+
+
+
+	<div class="contiainer">
+		<a data-index="1" href="" class="active"></a>
+		<a data-index="2" href=""></a>
+		<a data-index="3" href=""></a>
+		<a data-index="4" href=""></a>
+		<a data-index="5" href=""></a>
+	</div>
+	<script type="text/javascript">
+		var touchStart, touchFinish, sign;
+		var links = document.getElementsByTagName('a');
+		var container = document.getElementsByTagName('div')[0];
+		var cloneFirst = links[links.length - 1].cloneNode(true);
+		var cloneLast = links[0].cloneNode(true);
+
+		container.insertBefore(cloneFirst, links[0]);
+		container.insertBefore(cloneLast, links[links.length]);
+
+
+
+		var getMoveDirection = function(){
+
+			if(touchStart > touchFinish){
+				sign = 1;
+				return 'left';
+
+			} else {
+				sign = -1;
+				return 'right';
+			}
+			//return 'right' 'left'
+		};
+
+
+		var detectCurrentElementIndex = function(){
+
+				var handler = function() {
+					var index = Array.prototype.indexOf.call(links, this);
+					//console.log(index + 1);
+					return index + 1;
+
+				}
+
+				for (var i = 0; i < links.length; i++) {
+					links[i].addEventListener('touchmove', handler);
+				}
+
+
+		};
+
+
+
+
+		window.onload = function() {
+
+
+			document.addEventListener('touchstart', function(){
+				touchStart = event.touches[0].pageX;
+				getMoveDirection();
+			});
+			document.addEventListener('touchmove', function () {
+
+				for (var i = 0; i < links.length; i++) {
+					var cur = getComputedStyle(links[i]);
+alert(parseInt(cur.left))
+					links[i].style.left =  - sign * i * window.innerWidth + event.touches[0].pageX + 'px';
+				}
+
+				touchFinish = event.touches[0].pageX;
+//				console.log(getMoveDirection());
+				detectCurrentElementIndex();
+
+			});
+
+			document.addEventListener('touchend', function () {
+
+			});
+		}
+
+
+
+	</script>
+</body>
+</html>
