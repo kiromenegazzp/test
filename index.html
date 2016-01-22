@@ -63,7 +63,7 @@
 	<script type="text/javascript">
 		var touchStart, touchFinish, sign;
 		var links = document.getElementsByTagName('a');
-		var container = document.getElementsByTagName('div')[0];
+		var container = document.getElementsByClassName('div')[0];
 		var cloneFirst = links[links.length - 1].cloneNode(true);
 		var cloneLast = links[0].cloneNode(true);
 
@@ -119,7 +119,7 @@
 				}
 
 				touchFinish = event.touches[0].pageX;
-				console.log(getMoveDirection());
+				//console.log(getMoveDirection());
 				detectCurrentElementIndex();
 
 			});
