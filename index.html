@@ -115,8 +115,6 @@
 			document.addEventListener('touchmove', function () {
 
 				for (var i = 0; i < links.length; i++) {
-					var cur = getComputedStyle(links[i]);
-alert(parseInt(cur.left))
 					links[i].style.left =  - sign * i * window.innerWidth + event.touches[0].pageX + 'px';
 				}
 
