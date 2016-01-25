@@ -107,7 +107,9 @@
 				}else{
 					links[i].style.left = sign * i * window.innerWidth + event.touches[0].pageX  - window.innerWidth/2 + 'px';
 				}
+                links[i].setAttribute('data-num', i);
 			}
+
 
 
             if(index == links.length - 1){
