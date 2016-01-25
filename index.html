@@ -104,7 +104,7 @@
 				if(parseInt(curPos) > 0){
 					links[i].style.left = sign * i * window.innerWidth + event.touches[0].pageX + parseInt(curPos) + 'px';
 				}else{
-					links[i].style.left = sign * (i - 1) * window.innerWidth + event.touches[0].pageX + 'px';
+					links[i].style.left = sign * i * window.innerWidth + event.touches[0].pageX + 'px';
 				}
 			}
 
