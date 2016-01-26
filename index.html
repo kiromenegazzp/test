@@ -110,7 +110,7 @@
 
             if(index == links.length - 1){
 
-               [].forEach.call(container.childNodes, function(node){
+               [].forEach.call(container.children, function(node){
 
                    container.appendChild(node.cloneNode(node));
 
@@ -121,7 +121,7 @@
 				for (var n = 0; n < 5; n++) {
 					container.removeChild(container.querySelector('a:nth-of-type(n)'));
 				}
-				console.log(container.children);
+
 
 				for (var n = 0; n < 5; n++) {
 					container.children[n].style.left = '';
