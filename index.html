@@ -108,7 +108,7 @@
 						links[i].style.left = sign * i * window.innerWidth + event.touches[0].pageX + parseInt(curPos) + 'px';
 
 					}else{
-						links[i].style.left = sign * i * window.innerWidth + event.touches[0].pageX + sign * parseInt(curPos) - window.innerWidth + 'px';
+						links[i].style.left = sign * i * window.innerWidth - window.innerWidth + event.touches[0].pageX + parseInt(curPos)  + 'px';
 					}
 				}else{
 					links[i].style.left = sign * i * window.innerWidth + event.touches[0].pageX - window.innerWidth/2  +'px';
