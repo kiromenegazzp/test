@@ -98,15 +98,23 @@
 		});
 
 		document.addEventListener('touchmove', function () {
+			touchFinish = event.touches[0].pageX;
+			getMoveDirection();
 
 			for (var i = 0; i < links.length; i++) {
-				if(parseInt(curPos) > 0){
-					links[i].style.left = sign * i * window.innerWidth + event.touches[0].pageX + parseInt(curPos) + 'px';
-				}else{
-					links[i].style.left = sign * i * window.innerWidth + event.touches[0].pageX - window.innerWidth/2 + 'px';
 
+				if(parseInt(curPos) || (-parseInt(curPos)) > 0){
+					if(sign !== 1){
+						links[i].style.left = sign * i * window.innerWidth + event.touches[0].pageX + parseInt(curPos) + 'px';
+
+					}else{
+						links[i].style.left = sign * i * window.innerWidth + event.touches[0].pageX + parseInt(curPos) + 'px';
+					}
+				}else{
+					links[i].style.left = sign * i * window.innerWidth + event.touches[0].pageX - window.innerWidth/2  +'px';
 				}
 			}
+
 
             if(index == links.length - 1){
 
@@ -117,8 +125,7 @@
                });
             }
 
-			touchFinish = event.touches[0].pageX;
-			getMoveDirection();
+
 		});
 		document.addEventListener('touchend', function () {
 			/*var touch = event.changedTouches[0];
@@ -129,7 +136,6 @@
 					container.removeChild(container.querySelector('a:nth-of-type(1)'));
 				}
 			}
-
 		});
 	}
 </script>
