@@ -74,7 +74,6 @@
 		}
 		//return 'right' 'left'
 	};
-
 	var detectCurrentElementIndex = function(){
 		var handler = function() {
 			index = Array.prototype.indexOf.call(links, this);
@@ -123,11 +122,12 @@
 					container.removeChild(container.querySelector('a:nth-of-type(n)'));
 				}
 				console.log(container.children);
+
 				for (var n = 0; n < 5; n++) {
 					container.children[n].style.left = '';
 				}
-
             }
+
 			touchFinish = event.touches[0].pageX;
 			getMoveDirection();
 		});
