@@ -89,14 +89,13 @@
 
 		document.addEventListener('touchstart', function(){
 			touchStart = event.touches[0].pageX;
-			getMoveDirection();
             detectCurrentElementIndex();
             curPos = getComputedStyle(links[0]).left;
+
 
             for (var i = 0; i < links.length; i++){
                 i == index + 1 ? links[i].setAttribute('class', 'active') : links[i].removeAttribute('class');
             }
-
 		});
 
 		document.addEventListener('touchmove', function () {
@@ -105,12 +104,10 @@
 				if(parseInt(curPos) > 0){
 					links[i].style.left = sign * i * window.innerWidth + event.touches[0].pageX + parseInt(curPos) + 'px';
 				}else{
-					links[i].style.left = sign * i * window.innerWidth + event.touches[0].pageX  - window.innerWidth/2 + 'px';
+					links[i].style.left = sign * i * window.innerWidth + event.touches[0].pageX - window.innerWidth/2 + 'px';
+
 				}
-                links[i].setAttribute('data-num', i);
 			}
-
-
 
             if(index == links.length - 1){
 
@@ -121,15 +118,23 @@
                });
 
             }else if (index == 5){
-                for (var i = 0; i < 5; i++) {
-                    container.removeChild(links[i]);
-                }
-            }
 
+				for (var n = 0; n < 5; n++) {
+					container.removeChild(container.querySelector('a:nth-of-type(n)'));
+				}
+				console.log(container.children);
+				for (var n = 0; n < 5; n++) {
+					container.children[n].style.left = '';
+				}
+
+            }
+			touchFinish = event.touches[0].pageX;
+			getMoveDirection();
 		});
 		document.addEventListener('touchend', function () {
-			var touch = event.changedTouches[0];
-            touchFinish = touch.pageX;
+			/*var touch = event.changedTouches[0];
+            touchFinish = touch.pageX;*/
+
 		});
 	}
 </script>
